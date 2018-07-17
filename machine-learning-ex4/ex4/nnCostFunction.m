@@ -88,8 +88,8 @@ d2 = (d3*Theta2.*sigmoidGradient([ones(size(z2, 1), 1) z2]))(:, 2:end);
 delta1 = d2'* a1;
 delta2 = d3'* a2;
 
-Theta1_grad = delta1./m;
-Theta2_grad = delta2./m;
+Theta1_grad = delta1./m + (lambda/m)*[zeros(size(Theta1, 1), 1) Theta1(:, 2:end)];
+Theta2_grad = delta2./m + (lambda/m)*[zeros(size(Theta2, 1), 1) Theta2(:, 2:end)];
 
 % -------------------------------------------------------------
 
